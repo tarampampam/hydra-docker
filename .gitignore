@@ -1,0 +1,7 @@
+# IDEs
+/.idea
+
+# Temp dirs & trash
+.DS_Store
+/tmp
+/temp
