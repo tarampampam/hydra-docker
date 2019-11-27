@@ -11,7 +11,7 @@
 
 #### :fire: THIS IMAGE WITH INCLUDED TOOLS IS FOR LEGAL PURPOSES ONLY!
 
-### How can I use this?
+### What includes this image?
 
 Hydra documentation can be found [here][hydra]. Quick usage help:
 
