@@ -50,7 +50,7 @@ Example:  hydra -l user -P passlist.txt ftp://192.168.0.1
 
 Also this image includes collection of most popular passwords and user-names which can be found in directories:
 
-- `/opt/password` - content from [github.com/danielmiessler/SecLists/tree/master/Passwords](https://github.com/danielmiessler/SecLists/tree/master/Passwords)
+- `/opt/passwords` - content from [github.com/danielmiessler/SecLists/tree/master/Passwords](https://github.com/danielmiessler/SecLists/tree/master/Passwords)
 - `/opt/usernames` - content from [github.com/danielmiessler/SecLists/tree/master/Usernames](https://github.com/danielmiessler/SecLists/tree/master/Usernames)
 
 ### Usage example
@@ -58,7 +58,7 @@ Also this image includes collection of most popular passwords and user-names whi
 ```bash
 $ docker run --rm tarampampam/hydra \
     -L /opt/usernames/top-usernames-shortlist.txt \
-    -P /opt/password/darkweb2017-top100.txt \
+    -P /opt/passwords/darkweb2017-top100.txt \
     -f -V -s \
     8080 192.168.1.1 http-get
 ```

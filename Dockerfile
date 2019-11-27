@@ -49,7 +49,7 @@ RUN set -x \
     # Get password lists, login lists and etc
     && curl -SL https://github.com/danielmiessler/SecLists/archive/master.tar.gz -o /tmp/seclists.tar.gz \
     && tar xvzf /tmp/seclists.tar.gz -C /tmp \
-    && mv /tmp/SecLists-master/Passwords /opt/password \
+    && mv /tmp/SecLists-master/Passwords /opt/passwords \
     && mv /tmp/SecLists-master/Usernames /opt/usernames \
     && rm -Rf /tmp/SecLists-master /tmp/seclists.tar.gz
 
