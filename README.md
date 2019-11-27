@@ -9,9 +9,9 @@
 [![License][badge_license]][link_license]
 [![Issues][badge_issues]][link_issues]
 
-#### :fire: THIS IMAGE WITH INCLUDED TOOLS IS FOR LEGAL PURPOSES ONLY!
+### :fire: THIS IMAGE WITH ALL INCLUDED TOOLS IS FOR LEGAL PURPOSES ONLY! :fire:
 
-### What includes this image?
+## What includes this image?
 
 Hydra documentation can be found [here][hydra]. Quick usage help:
 
@@ -63,7 +63,7 @@ $ docker run --rm tarampampam/hydra \
     8080 192.168.1.1 http-get
 ```
 
-#### License
+### License
 
 MIT. Use anywhere for your pleasure.
 
