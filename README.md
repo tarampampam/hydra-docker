@@ -63,7 +63,7 @@ $ docker run --rm tarampampam/hydra \
     8080 192.168.1.1 http-get
 ```
 
-[badge_build]:https://img.shields.io/docker/build/tarampampam/hydra.svg?style=flat&maxAge=30
+[badge_build]:https://img.shields.io/docker/cloud/build/tarampampam/hydra?maxAge=30&label=docker
 [badge_pulls]:https://img.shields.io/docker/pulls/tarampampam/hydra.svg?style=flat&maxAge=30
 [badge_license]:https://img.shields.io/github/license/tarampampam/hydra-docker.svg?style=flat&maxAge=30
 [badge_issues]:https://img.shields.io/github/issues/tarampampam/hydra-docker.svg?style=flat&maxAge=30
