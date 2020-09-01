@@ -1,16 +1,16 @@
-FROM debian:jessie
-
-LABEL \
-    org.label-schema.name="hydra" \
-    org.label-schema.description="Docker image with hydra" \
-    org.label-schema.url="https://github.com/tarampampam/hydra-docker" \
-    org.label-schema.vcs-url="https://github.com/tarampampam/hydra-docker" \
-    org.label-schema.vendor="Tarampampam" \
-    org.label-schema.license="WTFPL" \
-    org.label-schema.schema-version="1.0"
+FROM debian:buster-slim
 
 ARG HYDRA_VER="9.1"
-ENV HYDRA_VER="${HYDRA_VER}"
+
+LABEL \
+  maintainer="tarampampam" \
+  org.opencontainers.image.url="https://github.com/tarampampam/hydra-docker" \
+  org.opencontainers.image.source="https://github.com/tarampampam/hydra-docker" \
+  org.opencontainers.image.version=$HYDRA_VER \
+  org.opencontainers.image.vendor="tarampampam" \
+  org.opencontainers.image.title="hydra" \
+  org.opencontainers.image.description="Docker image with hydra" \
+  org.opencontainers.image.licenses="WTFPL"
 
 RUN set -x \
     && apt-get update \
