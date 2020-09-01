@@ -44,10 +44,10 @@ jobs:
             --tag "tarampampam/hydra:${{ matrix.hydra-version }}-light" \
             .
 
-      - name: Push version image
+      - name: Push docker image (basic)
         if: matrix.light == 'false'
         run: docker push "tarampampam/hydra:${{ matrix.hydra-version }}"
 
-      - name: Push light image
+      - name: Push docker image (light)
         if: matrix.light == 'true'
         run: docker push "tarampampam/hydra:${{ matrix.hydra-version }}-light"
