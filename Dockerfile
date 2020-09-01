@@ -1,6 +1,6 @@
 FROM debian:buster-slim
 
-ARG HYDRA_VER="9.0"
+ARG HYDRA_VER="9.1"
 
 LABEL \
   maintainer="tarampampam" \
@@ -22,7 +22,6 @@ RUN set -x \
         #libgcrypt11-dev \
         libgcrypt-dev \
         #libgcrypt20-dev \
-        ca-certificates \
         #libgtk2.0-dev \
         libpcre3-dev \
         #firebird-dev \
@@ -35,8 +34,6 @@ RUN set -x \
         curl \
         gcc \
         1>/dev/null \
-    # Update CA certificates
-    && update-ca-certificates \
     # Get hydra sources and compile
     && ( mkdir /tmp/hydra \
         && curl -SsL "https://github.com/vanhauser-thc/thc-hydra/archive/v${HYDRA_VER}.tar.gz" -o /tmp/hydra/src.tar.gz \
@@ -53,14 +50,6 @@ RUN set -x \
     # Verify hydra installation
     && hydra -h || error_code=$? \
     && if [ ! "${error_code}" -eq 255 ]; then echo "Wrong exit code for 'hydra help' command"; exit 1; fi \
-    # Get password & login lists
-    && ( mkdir /tmp/seclists \
-        && curl -SsL https://github.com/danielmiessler/SecLists/archive/master.tar.gz -o /tmp/seclists/master.tar.gz \
-        && tar xzf /tmp/seclists/master.tar.gz -C /tmp/seclists \
-        && mv /tmp/seclists/SecLists-master/Passwords /opt/passwords \
-        && mv /tmp/seclists/SecLists-master/Usernames /opt/usernames \
-        && chmod -R u+r /opt/passwords /opt/usernames \
-        && rm -Rf /tmp/seclists ) \
     # Unprivileged user creation
     && adduser \
         --disabled-password \
@@ -70,6 +59,18 @@ RUN set -x \
         --no-create-home \
         --uid 10001 \
         hydra
+
+ARG SECLIST_VER="2020.3"
+
+RUN set -x \
+    # Get password & login lists (very large archive, about 970 MiB summary)
+    && mkdir /tmp/seclists \
+    && curl -SsL "https://github.com/danielmiessler/SecLists/archive/${SECLIST_VER}.tar.gz" -o /tmp/seclists/src.tar.gz \
+    && tar xzf /tmp/seclists/src.tar.gz -C /tmp/seclists \
+    && mv "/tmp/seclists/SecLists-${SECLIST_VER}/Passwords" /opt/passwords \
+    && mv "/tmp/seclists/SecLists-${SECLIST_VER}/Usernames" /opt/usernames \
+    && chmod -R u+r /opt/passwords /opt/usernames \
+    && rm -Rf /tmp/seclists
 
 # Use an unprivileged user
 USER hydra:hydra
