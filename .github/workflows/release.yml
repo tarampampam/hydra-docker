@@ -41,16 +41,8 @@ jobs:
             -f ./Dockerfile \
             --build-arg "HYDRA_VER=${{ matrix.hydra-version }}" \
             --build-arg "SECLIST_VER=" \
-            --tag "tarampampam/hydra:${{ matrix.hydra-version }}" \
+            --tag "tarampampam/hydra:${{ matrix.hydra-version }}-light" \
             .
-
-      - name: Show image info
-        run: |
-          docker images tarampampam/hydra:${{ matrix.hydra-version }}
-          docker inspect tarampampam/hydra:${{ matrix.hydra-version }}
-
-      - name: Try to run (with errors ignoring)
-        run: docker run --rm hydra:${{ matrix.hydra-version }} -h || true
 
       - name: Push version image
         if: matrix.light == 'false'
