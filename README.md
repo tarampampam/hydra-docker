@@ -127,7 +127,7 @@ WTFPL. Use anywhere for your pleasure.
 [badge_license]:https://img.shields.io/github/license/tarampampam/hydra-docker.svg?style=flat&maxAge=30
 [badge_issues]:https://img.shields.io/github/issues/tarampampam/hydra-docker.svg?style=flat&maxAge=30
 
-[link_build]:https://github.com/tarampampam/hydra/actions
+[link_build]:https://github.com/tarampampam/hydra-docker/actions
 [link_pulls]:https://hub.docker.com/r/tarampampam/hydra/
 [link_license]:https://github.com/tarampampam/hydra-docker/blob/master/LICENSE
 [link_issues]:https://github.com/tarampampam/hydra-docker/issues
