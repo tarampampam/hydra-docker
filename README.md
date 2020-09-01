@@ -4,7 +4,8 @@
 
 # Docker image with [hydra][hydra]
 
-[![Build][badge_build]][link_build]
+[![Build Status][badge_build]][link_build]
+[![Release Status][badge_release]][link_build]
 [![Stars][badge_pulls]][link_pulls]
 [![License][badge_license]][link_license]
 [![Issues][badge_issues]][link_issues]
@@ -105,21 +106,27 @@ $ docker run --rm tarampampam/hydra:9.1 \
 
 [![image stats](https://dockeri.co/image/tarampampam/hydra)][link_docker_tags]
 
-All supported image tags [can be found here][link_docker_tags].
+All supported image tags [can be found here][link_docker_tags] (images without username/password lists contains postfix `-light`).
+
+## Releasing
+
+New versions publishing is very simple - just "publish" new release using repo releases page. Release version can be arbitrary.
+
+All "supported" image versions defined in [releasing scenario](./.github/workflows/release.yml).
 
 ## License
 
 WTFPL. Use anywhere for your pleasure.
 
-[badge_build]:https://img.shields.io/docker/cloud/build/tarampampam/hydra?maxAge=30&label=docker
+[badge_build]:https://img.shields.io/github/workflow/status/tarampampam/hydra/tests?maxAge=30&logo=github
+[badge_release]:https://img.shields.io/github/workflow/status/tarampampam/hydra/release?maxAge=30&label=release&logo=github
 [badge_pulls]:https://img.shields.io/docker/pulls/tarampampam/hydra.svg?style=flat&maxAge=30
 [badge_license]:https://img.shields.io/github/license/tarampampam/hydra-docker.svg?style=flat&maxAge=30
 [badge_issues]:https://img.shields.io/github/issues/tarampampam/hydra-docker.svg?style=flat&maxAge=30
-[link_build]:https://hub.docker.com/r/tarampampam/hydra/builds/
+
+[link_build]:https://github.com/tarampampam/hydra/actions
 [link_pulls]:https://hub.docker.com/r/tarampampam/hydra/
 [link_license]:https://github.com/tarampampam/hydra-docker/blob/master/LICENSE
 [link_issues]:https://github.com/tarampampam/hydra-docker/issues
-[docker_hub]:https://hub.docker.com/r/tarampampam/hydra-docker/
 [link_docker_tags]:https://hub.docker.com/r/tarampampam/hydra/tags
 [hydra]:https://github.com/vanhauser-thc/thc-hydra
-[livereload]:https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei
