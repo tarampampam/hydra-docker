@@ -1,0 +1,34 @@
+name: tests
+
+on:
+  pull_request:
+    paths-ignore:
+      - '**.md'
+
+jobs: # Docs: <https://git.io/JvxXE>
+  docker-build:
+    name: Build docker image for version ${{ matrix.version }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        version: ['9.0', '9.1']
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Pull image for using as a cache
+        run: docker pull tarampampam/hydra:${{ matrix.version }} || true
+
+      - name: Build docker image
+        working-directory: ./${{ matrix.version }}
+        run: |
+          docker build \
+            -f ./Dockerfile \
+            --cache-from tarampampam/hydra:${{ matrix.version }} \
+            --tag hydra:${{ matrix.version }} \
+            .
+
+      - name: Try to run (with errors ignoring)
+        run: docker run --rm hydra:${{ matrix.version }} -h || true
