@@ -14,7 +14,7 @@ on:
 
 jobs: # Docs: <https://git.io/JvxXE>
   docker-build:
-    name: Build docker image (hydra v${{ matrix.hydra-version }})
+    name: Build docker image (hydra - ${{ matrix.hydra-version }}, light - ${{ matrix.light }})
     runs-on: ubuntu-latest
     timeout-minutes: 10
     strategy:
@@ -41,6 +41,7 @@ jobs: # Docs: <https://git.io/JvxXE>
             --cache-from "tarampampam/hydra:${{ matrix.hydra-version }}" \
             --build-arg "HYDRA_VER=${{ matrix.hydra-version }}" \
             --tag "hydra:${{ matrix.hydra-version }}" \
+            .
 
       - name: Build docker image (light)
         if: matrix.light == 'true'
@@ -52,6 +53,9 @@ jobs: # Docs: <https://git.io/JvxXE>
             --build-arg "SECLIST_VER=" \
             --tag "hydra:${{ matrix.hydra-version }}" \
             .
+
+      - name: Show image info
+        run: docker images hydra:${{ matrix.hydra-version }}
 
       - name: Try to run (with errors ignoring)
         run: docker run --rm hydra:${{ matrix.hydra-version }} -h || true
