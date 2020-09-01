@@ -63,14 +63,17 @@ RUN set -x \
 ARG SECLIST_VER="2020.3"
 
 RUN set -x \
-    # Get password & login lists (very large archive, about 970 MiB summary)
-    && mkdir /tmp/seclists \
-    && curl -SsL "https://github.com/danielmiessler/SecLists/archive/${SECLIST_VER}.tar.gz" -o /tmp/seclists/src.tar.gz \
-    && tar xzf /tmp/seclists/src.tar.gz -C /tmp/seclists \
-    && mv "/tmp/seclists/SecLists-${SECLIST_VER}/Passwords" /opt/passwords \
-    && mv "/tmp/seclists/SecLists-${SECLIST_VER}/Usernames" /opt/usernames \
-    && chmod -R u+r /opt/passwords /opt/usernames \
-    && rm -Rf /tmp/seclists
+    # If build argument `SECLIST_VER` is empty (`docker build --build-arg "SECLIST_VER=" ...`) - skip seclist getting
+    && if [ "_${SECLIST_VER}" != "_" ]; then \
+        # Get password & login lists (very large archive, about 970 MiB summary)
+        ( mkdir /tmp/seclists \
+            && curl -SsL "https://github.com/danielmiessler/SecLists/archive/${SECLIST_VER}.tar.gz" -o /tmp/seclists/src.tar.gz \
+            && tar xzf /tmp/seclists/src.tar.gz -C /tmp/seclists \
+            && mv "/tmp/seclists/SecLists-${SECLIST_VER}/Passwords" /opt/passwords \
+            && mv "/tmp/seclists/SecLists-${SECLIST_VER}/Usernames" /opt/usernames \
+            && chmod -R u+r /opt/passwords /opt/usernames \
+            && rm -Rf /tmp/seclists ) \
+    fi;
 
 # Use an unprivileged user
 USER hydra:hydra
