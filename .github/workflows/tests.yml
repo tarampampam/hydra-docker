@@ -19,7 +19,7 @@ jobs: # Docs: <https://git.io/JvxXE>
         uses: actions/checkout@v2
 
       - name: Pull image for using as a cache
-        uses: docker pull tarampampam/hydra:${{ matrix.version }} || true
+        run: docker pull tarampampam/hydra:${{ matrix.version }} || true
 
       - name: Build docker image
         working-directory: ./${{ matrix.version }}
