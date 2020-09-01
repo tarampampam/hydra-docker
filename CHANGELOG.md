@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 
 - GitHub actions for tests and releasing
 - Image for version `9.1`
+- "Light" version on images (with postfix `-light`) without username/password lists
 
 ### Removed
 
