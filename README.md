@@ -118,8 +118,8 @@ All "supported" image versions defined in [releasing scenario](./.github/workflo
 
 WTFPL. Use anywhere for your pleasure.
 
-[badge_build]:https://img.shields.io/github/workflow/status/tarampampam/hydra/tests?maxAge=30&logo=github
-[badge_release]:https://img.shields.io/github/workflow/status/tarampampam/hydra/release?maxAge=30&label=release&logo=github
+[badge_build]:https://img.shields.io/github/workflow/status/tarampampam/hydra-docker/tests?maxAge=30&logo=github
+[badge_release]:https://img.shields.io/github/workflow/status/tarampampam/hydra-docker/release?maxAge=30&label=release&logo=github
 [badge_pulls]:https://img.shields.io/docker/pulls/tarampampam/hydra.svg?style=flat&maxAge=30
 [badge_license]:https://img.shields.io/github/license/tarampampam/hydra-docker.svg?style=flat&maxAge=30
 [badge_issues]:https://img.shields.io/github/issues/tarampampam/hydra-docker.svg?style=flat&maxAge=30
