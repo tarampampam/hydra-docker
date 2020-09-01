@@ -29,3 +29,6 @@ jobs: # Docs: <https://git.io/JvxXE>
             --cache-from tarampampam/hydra:${{ matrix.version }} \
             --tag hydra:${{ matrix.version }} \
             .
+
+      - name: Try to run (with errors ignoring)
+        run: docker run --rm hydra:${{ matrix.version }} -h || true
