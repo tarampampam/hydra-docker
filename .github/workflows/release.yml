@@ -6,7 +6,7 @@ on:
 
 jobs:
   docker-image:
-    name: Build and push docker image (hydra v${{ matrix.hydra-version }})
+    name: Build and push docker image (hydra - ${{ matrix.hydra-version }}, light - ${{ matrix.light }})
     runs-on: ubuntu-latest
     timeout-minutes: 10
     strategy:
@@ -15,6 +15,9 @@ jobs:
         hydra-version:
           - '9.0'
           - '9.1'
+        light:
+          - 'false'
+          - 'true'
     steps:
       - name: Check out code
         uses: actions/checkout@v2
@@ -22,7 +25,8 @@ jobs:
       - name: Make docker login
         run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_LOGIN }}" --password-stdin &> /dev/null
 
-      - name: Build docker image
+      - name: Build docker image (basic)
+        if: matrix.light == 'false'
         run: |
           docker build \
             -f ./Dockerfile \
@@ -30,5 +34,28 @@ jobs:
             --tag "tarampampam/hydra:${{ matrix.hydra-version }}" \
             .
 
+      - name: Build docker image (light)
+        if: matrix.light == 'true'
+        run: |
+          docker build \
+            -f ./Dockerfile \
+            --build-arg "HYDRA_VER=${{ matrix.hydra-version }}" \
+            --build-arg "SECLIST_VER=" \
+            --tag "tarampampam/hydra:${{ matrix.hydra-version }}" \
+            .
+
+      - name: Show image info
+        run: |
+          docker images tarampampam/hydra:${{ matrix.hydra-version }}
+          docker inspect tarampampam/hydra:${{ matrix.hydra-version }}
+
+      - name: Try to run (with errors ignoring)
+        run: docker run --rm hydra:${{ matrix.hydra-version }} -h || true
+
       - name: Push version image
+        if: matrix.light == 'false'
         run: docker push "tarampampam/hydra:${{ matrix.hydra-version }}"
+
+      - name: Push light image
+        if: matrix.light == 'true'
+        run: docker push "tarampampam/hydra:${{ matrix.hydra-version }}-light"

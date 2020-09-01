@@ -106,7 +106,7 @@ $ docker run --rm tarampampam/hydra:9.1 \
 
 [![image stats](https://dockeri.co/image/tarampampam/hydra)][link_docker_tags]
 
-All supported image tags [can be found here][link_docker_tags].
+All supported image tags [can be found here][link_docker_tags] (images without username/password lists contains postfix `-light`).
 
 ## Releasing
 
