@@ -55,7 +55,7 @@ RUN set -x \
     && if [ ! "${error_code}" -eq 255 ]; then echo "Wrong exit code for 'hydra help' command"; exit 1; fi \
     # Get password & login lists
     && ( mkdir /tmp/seclists \
-        && curl -SL https://github.com/danielmiessler/SecLists/archive/master.tar.gz -o /tmp/seclists/master.tar.gz \
+        && curl -SsL https://github.com/danielmiessler/SecLists/archive/master.tar.gz -o /tmp/seclists/master.tar.gz \
         && tar xzf /tmp/seclists/master.tar.gz -C /tmp/seclists \
         && mv /tmp/seclists/SecLists-master/Passwords /opt/passwords \
         && mv /tmp/seclists/SecLists-master/Usernames /opt/usernames \
