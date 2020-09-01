@@ -1,0 +1,25 @@
+name: tests
+
+on:
+  pull_request:
+    paths-ignore:
+      - '**.md'
+
+jobs: # Docs: <https://git.io/JvxXE>
+  docker-build:
+    name: Build docker image for version ${{ matrix.version }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        version: ['9.0', '9.1']
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Build docker image
+        run: docker build -f ./${{ matrix.version }}/Dockerfile --tag hydra:${{ matrix.version }} ./${{ matrix.version }}
+
+      - name: Try to run docker image
+        run: docker run --rm hydra:${{ matrix.version }} -h
