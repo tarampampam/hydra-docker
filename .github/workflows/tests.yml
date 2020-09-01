@@ -18,8 +18,14 @@ jobs: # Docs: <https://git.io/JvxXE>
       - name: Check out code
         uses: actions/checkout@v2
 
-      - name: Build docker image
-        run: docker build -f ./${{ matrix.version }}/Dockerfile --tag hydra:${{ matrix.version }} ./${{ matrix.version }}
+      - name: Pull image for using as a cache
+        uses: docker pull tarampampam/hydra:${{ matrix.version }} || true
 
-      - name: Try to run docker image
-        run: docker run --rm hydra:${{ matrix.version }} -h
+      - name: Build docker image
+        working-directory: ./${{ matrix.version }}
+        run: |
+          docker build \
+            -f ./Dockerfile \
+            --cache-from tarampampam/hydra:${{ matrix.version }} \
+            --tag hydra:${{ matrix.version }} \
+            .
