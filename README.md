@@ -99,6 +99,8 @@ $ docker run --rm tarampampam/hydra:9.1 \
     8080 192.168.1.1 http-get
 ```
 
+> **Important notice**: by default processes in docker image will be run using **unprivileged** user. If you will have any problems with this (for example - writing something in mounted volumes will fails) you may use `docker run ... --user 0:0 ...` argument.
+
 ## Supported tags
 
 [![image stats](https://dockeri.co/image/tarampampam/hydra)][link_docker_tags]
