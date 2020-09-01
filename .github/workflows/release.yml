@@ -40,7 +40,7 @@ jobs:
           docker build \
             -f ./Dockerfile \
             --build-arg "HYDRA_VER=${{ matrix.hydra-version }}" \
-            --build-arg "SECLIST_VER=" \
+            --build-arg "SECLIST_VER=null" \
             --tag "tarampampam/hydra:${{ matrix.hydra-version }}-light" \
             .
 

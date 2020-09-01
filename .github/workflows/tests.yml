@@ -50,7 +50,7 @@ jobs: # Docs: <https://git.io/JvxXE>
             -f ./Dockerfile \
             --cache-from "tarampampam/hydra:${{ matrix.hydra-version }}" \
             --build-arg "HYDRA_VER=${{ matrix.hydra-version }}" \
-            --build-arg "SECLIST_VER=" \
+            --build-arg "SECLIST_VER=null" \
             --tag "hydra:${{ matrix.hydra-version }}" \
             .
 

@@ -63,8 +63,8 @@ RUN set -x \
 ARG SECLIST_VER="2020.3"
 
 RUN set -x \
-    # If build argument `SECLIST_VER` is empty (`docker build --build-arg "SECLIST_VER=" ...`) - skip seclist getting
-    && if [ "_${SECLIST_VER}" != "_" ]; then \
+    # If build argument `SECLIST_VER` is empty (`docker build --build-arg "SECLIST_VER=null" ...`) - skip seclist getting
+    && if [ "${SECLIST_VER}" != "null" ]; then \
         # Get password & login lists (very large archive, about 970 MiB summary)
         ( mkdir /tmp/seclists \
             && curl -SsL "https://github.com/danielmiessler/SecLists/archive/${SECLIST_VER}.tar.gz" -o /tmp/seclists/src.tar.gz \
