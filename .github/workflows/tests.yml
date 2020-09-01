@@ -55,7 +55,9 @@ jobs: # Docs: <https://git.io/JvxXE>
             .
 
       - name: Show image info
-        run: docker images hydra:${{ matrix.hydra-version }}
+        run: |
+          docker images hydra:${{ matrix.hydra-version }}
+          docker inspect -s hydra:${{ matrix.hydra-version }}
 
       - name: Try to run (with errors ignoring)
         run: docker run --rm hydra:${{ matrix.hydra-version }} -h || true
