@@ -17,12 +17,13 @@
 Hydra documentation can be found [here][hydra]. Quick usage help:
 
 ```
-Hydra v9.1 (c) 2020 by van Hauser/THC & David Maciejak - Please do not use in military or secret service
-organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+Hydra v9.1 (c) 2020 by van Hauser/THC & David Maciejak - Please do not use in military or secret
+service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and
+ethics anyway).
 
 Syntax: hydra [[[-l LOGIN|-L FILE] [-p PASS|-P FILE]] | [-C FILE]] [-e nsr] [-o FILE] [-t TASKS]
-              [-M FILE [-T TASKS]] [-w TIME] [-W TIME] [-f] [-s PORT] [-x MIN:MAX:CHARSET] [-c TIME]
-              [-ISOuvVd46] [-m MODULE_OPT] [service://server[:PORT][/OPT]]
+              [-M FILE [-T TASKS]] [-w TIME] [-W TIME] [-f] [-s PORT] [-x MIN:MAX:CHARSET]
+              [-c TIME] [-ISOuvVd46] [-m MODULE_OPT] [service://server[:PORT][/OPT]]
 
 Options:
   -R        restore a previous aborted/crashed session
@@ -59,9 +60,10 @@ Options:
 
 Supported services: adam6500 asterisk cisco cisco-enable cvs ftp[s] http[s]-{head|get|post}
                     http[s]-{get|post}-form http-proxy http-proxy-urlenum icq imap[s] irc ldap2[s]
-                    ldap3[-{cram|digest}md5][s] mssql mysql nntp oracle-listener oracle-sid pcanywhere
-                    pcnfs pop3[s] radmin2 redis rexec rlogin rpcap rsh rtsp s7-300 sip smb smtp[s]
-                    smtp-enum snmp socks5 ssh sshkey teamspeak telnet[s] vmauthd vnc xmpp
+                    ldap3[-{cram|digest}md5][s] mssql mysql nntp oracle-listener oracle-sid
+                    pcanywhere pcnfs pop3[s] radmin2 redis rexec rlogin rpcap rsh rtsp s7-300 sip
+                    smb smtp[s] smtp-enum snmp socks5 ssh sshkey teamspeak telnet[s] vmauthd vnc
+                    xmpp
 
 Hydra is a tool to guess/crack valid login/password pairs.
 Licensed under AGPL v3.0. The newest version is always available at;
@@ -69,7 +71,8 @@ https://github.com/vanhauser-thc/thc-hydra
 Please don't use in military or secret service organizations, or for illegal
 purposes. (This is a wish and non-binding - most such people do not care about
 laws and ethics anyway - and tell themselves they are one of the good ones.)
-These services were not compiled in: afp firebird memcached mongodb ncp oracle postgres sapr3 svn smb2.
+These services were not compiled in: afp firebird memcached mongodb ncp oracle postgres
+sapr3 svn smb2.
 
 Use HYDRA_PROXY_HTTP or HYDRA_PROXY environment variables for a proxy setup.
 E.g. % export HYDRA_PROXY=socks5://l:p@127.0.0.1:9150 (or: socks4:// connect://)
