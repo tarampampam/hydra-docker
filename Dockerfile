@@ -9,7 +9,7 @@ LABEL \
     org.label-schema.license="WTFPL" \
     org.label-schema.schema-version="1.0"
 
-ARG HYDRA_VER="9.0"
+ARG HYDRA_VER="9.1"
 ENV HYDRA_VER="${HYDRA_VER}"
 
 RUN set -x \
